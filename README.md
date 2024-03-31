@@ -1,14 +1,14 @@
 # Dokan Kits Plugin
 
-Plugin Name: Dokan Kits
-Plugin URI: https://wordpress.org/plugins/dokankits
-Description: A Helper Toolkits plugin for Dokan
-Version: 1.0.1
-Author: Tanvir Hasan
-Author URI: https://tanvircodex.com/
-Text Domain: dokan_kits
-License: GPL2
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ - Plugin Name: Dokan Kits
+ - Plugin URI: https://wordpress.org/plugins/dokankits
+ - Description: A Helper Toolkits plugin for Dokan
+ - Version: 1.0.1
+ - Author: Tanvir Hasan
+ - Author URI: https://tanvircodex.com/
+ - Text Domain: dokan_kits
+ - License: GPL2
+ - License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description
 
