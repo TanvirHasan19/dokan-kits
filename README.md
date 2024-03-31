@@ -1,5 +1,15 @@
 # Dokan Kits Plugin
 
+Plugin Name: Dokan Kits
+Plugin URI: https://wordpress.org/plugins/dokankits
+Description: A Helper Toolkits plugin for Dokan
+Version: 1.0.1
+Author: Tanvir Hasan
+Author URI: https://tanvircodex.com/
+Text Domain: dokan_kits
+License: GPL2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
 ## Description
 
 Welcome to the Dokan Kits plugin! This plugin is designed to enhance and extend the functionality of the Dokan multivendor marketplace plugin for WordPress. It provides additional features and tools to empower your marketplace and improve the user experience for both vendors and customers.
