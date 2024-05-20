@@ -25,8 +25,7 @@ function dokan_kits_initialize() {
     if (!is_plugin_active('dokan-lite/dokan.php')) {
         add_action('admin_notices', 'dokan_kits_warning_for_activation');
         deactivate_plugins(plugin_basename(__FILE__));
-    }
-    else {
+    } else {
         add_action('admin_menu', 'dokan_kits_add_menu_item');
         add_action('init', 'dokan_kits_remove_actions');
     }
@@ -92,6 +91,13 @@ function dokan_kits_settings_page() {
                 </div>
                 <p class="additional-text">Remove Split Shipping from the WooCommerce Cart and Checkout page using the Dokan Pro plugin.</p>
             </div>
+            <div class="dokan_kits_style_box">
+                <div class="checkbox-label">
+                    <label for="set_default_seller_role_checkbox" class="for_title_label">Enable "I am a Vendor" by default</label>
+                    <input type="checkbox" id="set_default_seller_role_checkbox" name="set_default_seller_role_checkbox" value="1" <?php checked(get_option('set_default_seller_role_checkbox'), 1); if (!is_plugin_active('dokan-lite/dokan.php')) echo 'disabled'; ?>>
+                </div>
+                <p class="additional-text">To enable the "I am a Vendor" option by default on the My Account page.</p>
+            </div>
             <?php submit_button(); ?>
         </form>
     </div>
@@ -104,6 +110,7 @@ function dokan_kits_register_settings() {
     register_setting('dokan_kits_settings_group', 'remove_vendor_checkbox');
     register_setting('dokan_kits_settings_group', 'remove_split_shipping_checkbox');
     register_setting('dokan_kits_settings_group', 'remove_split_shipping_pro_checkbox');
+    register_setting('dokan_kits_settings_group', 'set_default_seller_role_checkbox');
     // Add other settings similarly
 }
 add_action('admin_init', 'dokan_kits_register_settings');
@@ -125,20 +132,29 @@ function dokan_kits_remove_actions() {
     if (get_option('remove_split_shipping_pro_checkbox') === '1') {
         dokan_kits_pro_remove_split_shipping();
     }
+
+    if (get_option('set_default_seller_role_checkbox') === '1') {
+        add_filter('dokan_seller_registration_default_role', 'set_dokan_seller_default_role');
+    }
     // Add other actions to remove similarly
 }
 add_action('init', 'dokan_kits_remove_actions');
 
 // Function to remove split shipping
 function dokan_kits_lite_remove_split_shipping() {
-    dokan_remove_hook_for_anonymous_class( 'woocommerce_cart_shipping_packages', 'WeDevs\Dokan\Shipping\Hooks', 'split_shipping_packages', 10 );
-    dokan_remove_hook_for_anonymous_class( 'woocommerce_checkout_create_order_shipping_item', 'WeDevs\Dokan\Shipping\Hooks', 'add_shipping_pack_meta', 10 );
-    dokan_remove_hook_for_anonymous_class( 'woocommerce_shipping_package_name', 'WeDevs\Dokan\Shipping\Hooks', 'change_shipping_pack_name', 10 );
+    dokan_remove_hook_for_anonymous_class('woocommerce_cart_shipping_packages', 'WeDevs\Dokan\Shipping\Hooks', 'split_shipping_packages', 10);
+    dokan_remove_hook_for_anonymous_class('woocommerce_checkout_create_order_shipping_item', 'WeDevs\Dokan\Shipping\Hooks', 'add_shipping_pack_meta', 10);
+    dokan_remove_hook_for_anonymous_class('woocommerce_shipping_package_name', 'WeDevs\Dokan\Shipping\Hooks', 'change_shipping_pack_name', 10);
 }
 
 // Function to remove split shipping using Dokan Pro
 function dokan_kits_pro_remove_split_shipping() {
-    remove_filter( 'woocommerce_cart_shipping_packages', 'dokan_custom_split_shipping_packages' );
-    remove_filter( 'woocommerce_shipping_package_name', 'dokan_change_shipping_pack_name');
-    remove_action( 'woocommerce_checkout_create_order_shipping_item', 'dokan_add_shipping_pack_meta');
+    remove_filter('woocommerce_cart_shipping_packages', 'dokan_custom_split_shipping_packages');
+    remove_filter('woocommerce_shipping_package_name', 'dokan_change_shipping_pack_name');
+    remove_action('woocommerce_checkout_create_order_shipping_item', 'dokan_add_shipping_pack_meta');
+}
+
+// Function to set the default seller role
+function set_dokan_seller_default_role() {
+    return 'seller';
 }
