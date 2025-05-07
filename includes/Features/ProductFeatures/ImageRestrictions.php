@@ -61,6 +61,7 @@ class ImageRestrictions {
                 
                 // Pass settings to JavaScript
                 wp_localize_script( 'dokan-kits-image-restrictions', 'dokanKitsImageRestrictions', [
+                    'hasSizeRestrictions' => get_option( 'enable_dimension_restrictions' ) === '1',
                     'enableDimensions' => get_option( 'enable_dimension_restrictions' ) === '1',
                     'requiredWidth' => intval( get_option( 'image_max_width', 800 ) ),
                     'requiredHeight' => intval( get_option( 'image_max_height', 800 ) ),
