@@ -30,7 +30,7 @@ class LiteShipping extends AbstractFeature {
      */
     protected function setup() {
         // Remove split shipping
-        $this->remove_split_shipping();
+	     add_action( 'init', [ $this, 'remove_split_shipping' ], 10000000000000 );
         
         /**
          * Action after lite shipping setup
@@ -45,15 +45,15 @@ class LiteShipping extends AbstractFeature {
      *
      * @return void
      */
-    protected function remove_split_shipping() {
-        if ( ! function_exists( 'dokan_remove_hook_for_anonymous_class' ) || ! class_exists( 'WeDevs\Dokan\Shipping\Hooks' ) ) {
+    public function remove_split_shipping() {
+        if ( ! function_exists( 'dokan_remove_hook_for_anonymous_class' ) ) {
             return;
         }
-        
-        dokan_remove_hook_for_anonymous_class( 'woocommerce_cart_shipping_packages', 'WeDevs\Dokan\Shipping\Hooks', 'split_shipping_packages', 10 );
-        dokan_remove_hook_for_anonymous_class( 'woocommerce_checkout_create_order_shipping_item', 'WeDevs\Dokan\Shipping\Hooks', 'add_shipping_pack_meta', 10 );
-        dokan_remove_hook_for_anonymous_class( 'woocommerce_shipping_package_name', 'WeDevs\Dokan\Shipping\Hooks', 'change_shipping_pack_name', 10 );
-        
+
+	    remove_all_filters( 'woocommerce_cart_shipping_packages' );
+	    remove_all_actions( 'woocommerce_checkout_create_order_shipping_item');
+	    remove_all_filters( 'woocommerce_shipping_package_name' );
+
         /**
          * Action after removing split shipping
          *
