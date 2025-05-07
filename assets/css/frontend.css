@@ -1,0 +1,27 @@
+/**
+ * Dokan Kits Frontend Styles
+ */
+
+/* Hide add to cart buttons when option is enabled */
+.dokan-kits-hide-add-to-cart .single-product .product-type-simple .single_add_to_cart_button,
+.dokan-kits-hide-add-to-cart .single-product .product-type-variable .single_add_to_cart_button,
+.dokan-kits-hide-add-to-cart .product .add_to_cart_button {
+    display: none !important;
+}
+
+/* Style the image restriction notice */
+.dokan-alert.dokan-alert-info {
+    background-color: #f8f9fa;
+    border-left: 4px solid #17a2b8;
+    margin: 10px 0;
+    padding: 15px;
+    color: #495057;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.dokan-alert.dokan-alert-info strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #17a2b8;
+}

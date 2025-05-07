@@ -1,0 +1,350 @@
+/**
+ * Dokan Kits Admin Styles
+ */
+
+/* Main container */
+.dokan-kits-wrap {
+    max-width: 1700px;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+/* Header box */
+.dokan_kits_description-box {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.dokan_kits_description-box .dokan-kits-logo {
+    max-width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.dokan_kits_description-box .description-box h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Tab navigation */
+.dokan-kits-tabs-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.dokan-kits-tabs-navigation {
+    margin-bottom: 20px;
+}
+
+.dokan-kits-tabs {
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.dokan-kits-tab {
+    margin-bottom: -1px;
+}
+
+.dokan-kits-tab a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.dokan-kits-tab a i {
+    margin-right: 8px;
+    color: #1c9371;
+}
+
+.dokan-kits-tab.active a {
+    background: white;
+    border-bottom: 1px solid white;
+    color: #1c9371;
+}
+
+/* Settings grid */
+#dokan-kits-body-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+/* Common box styles */
+#dokan-kits-body-content > div {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Regular boxes */
+#dokan-kits-body-content > div:not(.seperate-style-for-box) {
+    position: relative;
+    min-height: 140px;
+}
+
+/* Common icon styles */
+#dokan-kits-body-content > div i {
+    color: #1c9371;
+    background: #f0f4ff;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.25rem !important; /* Override font-awesome */
+    float: left;
+    margin-right: 1rem;
+}
+
+/* Content container */
+#dokan-kits-body-content > div:not(.seperate-style-for-box) .toggle-label {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+/* Common label styles */
+.for_title_label {
+    font-size: 0.938rem;
+    font-weight: 600;
+    color: #1f2937;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Common description styles */
+.additional-text {
+    font-size: 0.813rem;
+    color: #6b7280;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Common toggle switch styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7eb;
+    transition: .3s;
+    border-radius: 22px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #1c9371;
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+/* Common status text */
+.status-text {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* Regular box controls positioning */
+#dokan-kits-body-content > div:not(.seperate-style-for-box) .switch {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+#dokan-kits-body-content > div:not(.seperate-style-for-box) .status-text {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+/* Product type rows */
+.type-bu-si {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.type-bu-si .for_title_label {
+    margin: 0;
+    flex: 1;
+}
+
+.type-bu-si .status-text {
+    margin-left: 0.5rem;
+}
+
+/* Toggle group spacing */
+.toggle-group {
+    margin-top: 1rem;
+}
+
+/* Make separate-style-for-box full width */
+.seperate-style-for-box {
+    grid-column: 1 / -1; /* Spans all columns */
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Save changes section */
+#dokan_kits_save_ch {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#dokan_kits_save_ch .button-primary {
+    background: #1c9371;
+    border-color: #1c9371;
+    box-shadow: 0 1px 0 #1c9371;
+    text-shadow: 0 -1px 1px #1c9371, 1px 0 1px #1c9371, 0 1px 1px #1c9371, -1px 0 1px #1c9371;
+}
+
+#dokan_kits_save_ch .button-primary:hover,
+#dokan_kits_save_ch .button-primary:focus {
+    background: #157359;
+    border-color: #157359;
+    box-shadow: 0 1px 0 #157359;
+}
+
+/* Input fields */
+.image-restrictions-settings {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f9fafb;
+    border-radius: 6px;
+}
+
+.image-restrictions-settings .restriction-input {
+    margin-bottom: 10px;
+}
+
+.image-restrictions-settings .restriction-input label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.image-restrictions-settings .restriction-input input {
+    width: 100%;
+    max-width: 100px;
+}
+
+.add-extra-margin-bot {
+    margin-bottom: 30px;
+}
+
+/* Success message */
+.save-changes-message {
+    color: green;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Status text colors */
+.status-text:contains("Active") {
+    color: green;
+}
+
+.status-text:contains("Inactive") {
+    color: red;
+}
+
+/* Responsive styles */
+@media (max-width: 1536px) {
+    #dokan-kits-body-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .seperate-style-for-box {
+        grid-column: 1 / span 3;
+    }
+}
+
+@media (max-width: 1280px) {
+    #dokan-kits-body-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .seperate-style-for-box {
+        grid-column: 1 / span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .dokan-kits-wrap {
+        padding: 1rem;
+    }
+    
+    #dokan-kits-body-content {
+        grid-template-columns: 1fr;
+    }
+    .seperate-style-for-box {
+        grid-column: 1;
+    }
+    
+    .dokan-kits-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .dokan_kits_description-box {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .dokan_kits_description-box .dokan-kits-logo {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
