@@ -62,7 +62,6 @@ class Assets {
             [], 
             DOKAN_KITS_VERSION 
         );
-
         // Register admin scripts
         wp_enqueue_script( 
             'dokan-kits-admin', 

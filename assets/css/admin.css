@@ -203,29 +203,84 @@ input:checked + .slider:before {
     left: 1rem;
 }
 
+/* Number input container */
+.number-input-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.number-input-container input[type="number"] {
+    width: 100px;
+    height: 34px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 0 8px;
+    font-size: 13px;
+    color: #32373c;
+    background-color: #fff;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+    transition: border-color 0.15s ease-in-out;
+}
+
+.number-input-container input[type="number"]:focus {
+    border-color: #1c9371;
+    box-shadow: 0 0 0 1px #1c9371;
+    outline: none;
+}
+
+.number-input-container input[type="number"]::-webkit-inner-spin-button, 
+.number-input-container input[type="number"]::-webkit-outer-spin-button { 
+    opacity: 1;
+    height: 24px;
+}
+
+.number-input-container .input-suffix {
+    margin-left: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+}
+
 /* Product type rows */
 .type-bu-si {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem;
+    padding: 0.85rem;
     background: #f9fafb;
     border-radius: 6px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    transition: background-color 0.2s ease;
+}
+
+.type-bu-si:hover {
+    background: #f0f4f8;
 }
 
 .type-bu-si .for_title_label {
     margin: 0;
     flex: 1;
+    font-size: 13px;
 }
 
 .type-bu-si .status-text {
     margin-left: 0.5rem;
+    min-width: 50px;
 }
 
-/* Toggle group spacing */
+/* Dependency handling - field containers */
+.type-bu-si[style*="none"] + .type-bu-si {
+    margin-top: 0;
+}
+
+/* Toggle group spacing and style */
 .toggle-group {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
+    background: #fafbfc;
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid #eee;
 }
 
 /* Make separate-style-for-box full width */
@@ -233,8 +288,13 @@ input:checked + .slider:before {
     grid-column: 1 / -1; /* Spans all columns */
     background: white;
     border-radius: 12px;
-    padding: 1rem;
+    padding: 1.25rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.seperate-style-for-box .additional-text {
+    margin-bottom: 0.75rem;
 }
 
 /* Save changes section */
@@ -294,13 +354,26 @@ input:checked + .slider:before {
     font-weight: bold;
 }
 
-/* Status text colors */
-.status-text:contains("Active") {
-    color: green;
+/* Status text colors and styling */
+.status-text {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
+/* Active status */
+.status-text:contains("Active") {
+    color: #047857;
+    background-color: rgba(4, 120, 87, 0.1);
+}
+
+/* Inactive status */
 .status-text:contains("Inactive") {
-    color: red;
+    color: #B91C1C;
+    background-color: rgba(239, 68, 68, 0.1);
 }
 
 /* Responsive styles */

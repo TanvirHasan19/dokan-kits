@@ -41,69 +41,71 @@ class AdvancedTab extends AbstractTab {
             'title' => __( 'Product Image Restrictions', 'dokan-kits' ),
         ];
         
-        // Dimension restrictions
+        // Dimension restrictions group
         $this->settings[] = [
-            'id'          => 'enable_dimension_restrictions',
-            'type'        => 'toggle',
+            'id'          => 'dimension_restrictions_group',
+            'type'        => 'group',
             'title'       => __( 'Product Image Dimension Restrictions', 'dokan-kits' ),
             'description' => __( 'Set exact dimension requirements for vendor product images.', 'dokan-kits' ),
-            'icon'        => 'fa-crop'
-        ];
-        
-        // Dimension settings (only visible when enabled)
-        $this->settings[] = [
-            'id'    => 'image_dimension_settings',
-            'type'  => 'custom',
-            'dependency' => [
-                'id'    => 'enable_dimension_restrictions',
-                'value' => '1',
-            ],
-            'renderer' => function() {
-                ?>
-                <div class="dimension-settings-container" style="padding: 10px 0 20px 30px;">
-                    <div class="restriction-input" style="margin-bottom: 10px;">
-                        <label><?php _e('Required Width (px):', 'dokan-kits'); ?>
-                            <input type="number" name="image_max_width" value="<?php echo esc_attr(get_option('image_max_width', 800)); ?>" min="1">
-                        </label>
-                    </div>
-                    <div class="restriction-input">
-                        <label><?php _e('Required Height (px):', 'dokan-kits'); ?>
-                            <input type="number" name="image_max_height" value="<?php echo esc_attr(get_option('image_max_height', 800)); ?>" min="1">
-                        </label>
-                    </div>
-                </div>
-                <?php
-            }
+            'icon'        => 'fa-crop',
+            'fields'      => [
+                [
+                    'id'    => 'enable_dimension_restrictions',
+                    'title' => __( 'Enable Dimension Restrictions', 'dokan-kits' )
+                ],
+                [
+                    'id'    => 'image_max_width',
+                    'title' => __( 'Required Width', 'dokan-kits' ),
+                    'type'  => 'number',
+                    'default' => 800,
+                    'min'   => 1,
+                    'suffix' => 'px',
+                    'dependency' => [
+                        'id'    => 'enable_dimension_restrictions',
+                        'value' => '1',
+                    ],
+                ],
+                [
+                    'id'    => 'image_max_height',
+                    'title' => __( 'Required Height', 'dokan-kits' ),
+                    'type'  => 'number',
+                    'default' => 800,
+                    'min'   => 1,
+                    'suffix' => 'px',
+                    'dependency' => [
+                        'id'    => 'enable_dimension_restrictions',
+                        'value' => '1',
+                    ],
+                ]
+            ]
         ];
         
         // Size restrictions
         $this->settings[] = [
-            'id'          => 'enable_size_restrictions',
-            'type'        => 'toggle',
+            'id'          => 'size_restrictions_group',
+            'type'        => 'group',
             'title'       => __( 'Product Image Size Restriction', 'dokan-kits' ),
             'description' => __( 'Set maximum file size limit for vendor product images.', 'dokan-kits' ),
-            'icon'        => 'fa-file-image'
-        ];
-        
-        // Size settings (only visible when enabled)
-        $this->settings[] = [
-            'id'    => 'image_size_settings',
-            'type'  => 'custom',
-            'dependency' => [
-                'id'    => 'enable_size_restrictions',
-                'value' => '1',
-            ],
-            'renderer' => function() {
-                ?>
-                <div class="size-settings-container" style="padding: 10px 0 20px 30px;">
-                    <div class="restriction-input">
-                        <label><?php _e('Maximum File Size (MB):', 'dokan-kits'); ?>
-                            <input type="number" name="image_max_size" value="<?php echo esc_attr(get_option('image_max_size', 2)); ?>" min="0.1" step="0.1">
-                        </label>
-                    </div>
-                </div>
-                <?php
-            }
+            'icon'        => 'fa-file-image',
+            'fields'      => [
+                [
+                    'id'    => 'enable_size_restrictions',
+                    'title' => __( 'Enable Size Restrictions', 'dokan-kits' )
+                ],
+                [
+                    'id'    => 'image_max_size',
+                    'title' => __( 'Maximum File Size', 'dokan-kits' ),
+                    'type'  => 'number',
+                    'default' => 2,
+                    'min'   => 0.1,
+                    'step'  => 0.1,
+                    'suffix' => 'MB',
+                    'dependency' => [
+                        'id'    => 'enable_size_restrictions',
+                        'value' => '1',
+                    ],
+                ]
+            ]
         ];
     }
 }

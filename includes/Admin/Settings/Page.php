@@ -129,6 +129,8 @@ class Page {
             <form method="post" action="options.php">
                 <?php 
                 settings_fields( 'dokan_kits_settings_group' );
+
+                error_log( '$tabs[ $active_tab ]' . print_r( $tabs[ $active_tab ], true));
                 
                 // Render the active tab content
                 if ( isset( $tabs[ $active_tab ] ) ) {
